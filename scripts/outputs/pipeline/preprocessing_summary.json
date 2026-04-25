@@ -1,0 +1,18 @@
+{
+  "input_path": "C:\\Users\\ACER\\Desktop\\text_classification\\pipeline\\stack-overflow-data.csv",
+  "output_path": "C:\\Users\\ACER\\Desktop\\text_classification\\pipeline\\outputs\\pipeline\\preprocessed_stack_overflow_data.csv",
+  "rows": 40000,
+  "columns": [
+    "row_id",
+    "post",
+    "tags",
+    "preprocessed_post"
+  ],
+  "keep_code_content": true,
+  "remove_stop_words": true,
+  "unique_tags": 20,
+  "code_block_rows": 27847,
+  "average_preprocessed_characters": 747.7552,
+  "average_preprocessed_tokens": 94.07375,
+  "duration_seconds": 186.2124
+}
