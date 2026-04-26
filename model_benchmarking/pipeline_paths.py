@@ -15,6 +15,7 @@ SPLIT_SUMMARY_PATH = SPLIT_OUTPUT_DIR / "split_summary.json"
 
 VECTORIZATION_OUTPUT_DIR = PIPELINE_OUTPUT_DIR / "vectorized"
 MODELS_OUTPUT_DIR = PIPELINE_OUTPUT_DIR / "models"
+MODEL_FINETUNING_OUTPUT_DIR = PIPELINE_OUTPUT_DIR / "model_finetuning"
 
 
 def ensure_pipeline_directories() -> None:
@@ -22,3 +23,4 @@ def ensure_pipeline_directories() -> None:
     SPLIT_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     VECTORIZATION_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     MODELS_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    MODEL_FINETUNING_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
