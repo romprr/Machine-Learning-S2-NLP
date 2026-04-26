@@ -1,0 +1,24 @@
+from pathlib import Path
+
+
+PROJECT_ROOT = Path(__file__).resolve().parent
+RAW_DATA_PATH = PROJECT_ROOT / "stack-overflow-data.csv"
+
+PIPELINE_OUTPUT_DIR = PROJECT_ROOT / "outputs" / "pipeline"
+PREPROCESSED_DATA_PATH = PIPELINE_OUTPUT_DIR / "preprocessed_stack_overflow_data.csv"
+PREPROCESSING_SUMMARY_PATH = PIPELINE_OUTPUT_DIR / "preprocessing_summary.json"
+
+SPLIT_OUTPUT_DIR = PIPELINE_OUTPUT_DIR / "splits"
+TRAIN_SPLIT_PATH = SPLIT_OUTPUT_DIR / "train_data.csv"
+TEST_SPLIT_PATH = SPLIT_OUTPUT_DIR / "test_data.csv"
+SPLIT_SUMMARY_PATH = SPLIT_OUTPUT_DIR / "split_summary.json"
+
+VECTORIZATION_OUTPUT_DIR = PIPELINE_OUTPUT_DIR / "vectorized"
+MODELS_OUTPUT_DIR = PIPELINE_OUTPUT_DIR / "models"
+
+
+def ensure_pipeline_directories() -> None:
+    PIPELINE_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    SPLIT_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    VECTORIZATION_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    MODELS_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
