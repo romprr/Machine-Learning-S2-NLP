@@ -1,0 +1,31 @@
+{
+  "vectorization": "tfidf",
+  "model": "sgd_classifier",
+  "component_models": null,
+  "tune_hyperparameters": true,
+  "cv_folds": 5,
+  "scoring": "f1_macro",
+  "best_cv_score": 0.8383580493797842,
+  "best_params": {
+    "alpha": 1e-06,
+    "average": false,
+    "class_weight": "balanced",
+    "eta0": 0.03,
+    "learning_rate": "adaptive",
+    "loss": "hinge",
+    "penalty": "l2"
+  },
+  "fit_time_seconds": 12395.7805,
+  "predict_time_seconds": 0.042,
+  "accuracy": 0.8409,
+  "micro_precision": 0.8409,
+  "micro_recall": 0.8409,
+  "micro_f1": 0.8409,
+  "macro_precision": 0.8425292223589389,
+  "macro_recall": 0.8409000000000001,
+  "macro_f1": 0.8406730293185476,
+  "weighted_precision": 0.8425292223589389,
+  "weighted_recall": 0.8409,
+  "weighted_f1": 0.8406730293185477,
+  "label_count": 20
+}

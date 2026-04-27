@@ -1,0 +1,1 @@
+This is the result of parameter tuning for SGD, just drag the folder tfidf_sgd_classifier in outputs/pipeline/model_finetuning

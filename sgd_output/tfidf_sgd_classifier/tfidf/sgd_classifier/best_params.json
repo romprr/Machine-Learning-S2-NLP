@@ -1,0 +1,9 @@
+{
+  "alpha": 1e-06,
+  "average": false,
+  "class_weight": "balanced",
+  "eta0": 0.03,
+  "learning_rate": "adaptive",
+  "loss": "hinge",
+  "penalty": "l2"
+}

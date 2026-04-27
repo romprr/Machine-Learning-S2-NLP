@@ -1,0 +1,140 @@
+[
+  {
+    "best_cv_score": 0.8212456181127743,
+    "best_params": {
+      "alpha": 3e-06,
+      "average": false,
+      "class_weight": "balanced",
+      "eta0": 0.03,
+      "learning_rate": "adaptive",
+      "loss": "hinge",
+      "penalty": "l2"
+    },
+    "fit_time_seconds": 12088.6689,
+    "param_grid": [
+      {
+        "alpha": [
+          1e-06,
+          3e-06,
+          1e-05,
+          3e-05,
+          0.0001,
+          0.0003,
+          0.001
+        ],
+        "average": [
+          false,
+          true
+        ],
+        "class_weight": [
+          null,
+          "balanced"
+        ],
+        "eta0": [
+          0.001,
+          0.003,
+          0.01,
+          0.03
+        ],
+        "learning_rate": [
+          "optimal",
+          "adaptive"
+        ],
+        "loss": [
+          "hinge",
+          "log_loss"
+        ],
+        "penalty": [
+          "l2"
+        ]
+      },
+      {
+        "alpha": [
+          1e-06,
+          3e-06,
+          1e-05,
+          3e-05,
+          0.0001,
+          0.0003
+        ],
+        "average": [
+          false,
+          true
+        ],
+        "class_weight": [
+          null,
+          "balanced"
+        ],
+        "eta0": [
+          0.001,
+          0.003,
+          0.01
+        ],
+        "l1_ratio": [
+          0.15,
+          0.3,
+          0.5,
+          0.7,
+          0.85
+        ],
+        "learning_rate": [
+          "optimal",
+          "adaptive"
+        ],
+        "loss": [
+          "hinge",
+          "log_loss"
+        ],
+        "penalty": [
+          "elasticnet"
+        ]
+      }
+    ],
+    "param_grid_size": 1888,
+    "round": "round_1"
+  },
+  {
+    "best_cv_score": 0.8383580493797842,
+    "best_params": {
+      "alpha": 1e-06,
+      "average": false,
+      "class_weight": "balanced",
+      "eta0": 0.03,
+      "learning_rate": "adaptive",
+      "loss": "hinge",
+      "penalty": "l2"
+    },
+    "fit_time_seconds": 307.1116,
+    "param_grid": {
+      "alpha": [
+        1e-06,
+        1.7321e-06,
+        3e-06,
+        5.4772e-06,
+        1e-05
+      ],
+      "average": [
+        false
+      ],
+      "class_weight": [
+        "balanced"
+      ],
+      "eta0": [
+        0.01,
+        0.0173205081,
+        0.03
+      ],
+      "learning_rate": [
+        "adaptive"
+      ],
+      "loss": [
+        "hinge"
+      ],
+      "penalty": [
+        "l2"
+      ]
+    },
+    "param_grid_size": 15,
+    "round": "round_2"
+  }
+]

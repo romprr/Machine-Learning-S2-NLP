@@ -1,0 +1,16 @@
+{
+  "vectorization": "tfidf",
+  "model_names": [
+    "sgd_classifier"
+  ],
+  "cv_folds": 5,
+  "cv_repeats": 2,
+  "scoring": "f1_macro",
+  "n_jobs": -1,
+  "run_name": "tfidf_sgd_classifier",
+  "search_profile": "deep",
+  "refine_rounds": 2,
+  "search_verbose": 2,
+  "vectorization_dir": "C:\\Users\\djgam\\Documents\\Master\\Machine-Learning-S2-NLP\\model_benchmarking\\outputs\\pipeline\\vectorized\\tfidf",
+  "output_dir": "C:\\Users\\djgam\\Documents\\Master\\Machine-Learning-S2-NLP\\model_benchmarking\\outputs\\pipeline\\model_finetuning\\tfidf_sgd_classifier\\tfidf"
+}
