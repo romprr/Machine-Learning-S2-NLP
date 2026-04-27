@@ -1,0 +1,15 @@
+__pycache__/
+outputs/
+*.pyc
+*.pyo
+*.pyd
+*.joblib
+*.npz
+*.csv
+*.json
+!__init__.py
+!pipeline_paths.py
+!preprocessing.py
+!split_data.py
+!train_models.py
+!vectorization.py
