@@ -1,0 +1,2462 @@
+{
+    "c#": [
+        {
+            "token": "console . writeline",
+            "coverage": 231,
+            "precision": 0.84
+        },
+        {
+            "token": ". writeline (",
+            "coverage": 256,
+            "precision": 0.8258
+        },
+        {
+            "token": "writeline (",
+            "coverage": 256,
+            "precision": 0.8232
+        },
+        {
+            "token": ". writeline",
+            "coverage": 266,
+            "precision": 0.821
+        },
+        {
+            "token": "writeline",
+            "coverage": 266,
+            "precision": 0.8185
+        },
+        {
+            "token": "private void",
+            "coverage": 243,
+            "precision": 0.5073
+        }
+    ],
+    "asp.net": [
+        {
+            "token": "in asp .",
+            "coverage": 391,
+            "precision": 0.9265
+        },
+        {
+            "token": "in asp",
+            "coverage": 405,
+            "precision": 0.9163
+        },
+        {
+            "token": "gt lt asp",
+            "coverage": 277,
+            "precision": 0.8907
+        },
+        {
+            "token": "lt asp",
+            "coverage": 322,
+            "precision": 0.8871
+        },
+        {
+            "token": "asp . net",
+            "coverage": 1060,
+            "precision": 0.8717
+        },
+        {
+            "token": "asp .",
+            "coverage": 1074,
+            "precision": 0.8682
+        },
+        {
+            "token": "runat server",
+            "coverage": 346,
+            "precision": 0.8501
+        },
+        {
+            "token": "runat",
+            "coverage": 346,
+            "precision": 0.848
+        },
+        {
+            "token": "asp",
+            "coverage": 1285,
+            "precision": 0.8258
+        },
+        {
+            "token": "web .",
+            "coverage": 252,
+            "precision": 0.6811
+        },
+        {
+            "token": "aspx",
+            "coverage": 445,
+            "precision": 0.6321
+        },
+        {
+            "token": ". aspx",
+            "coverage": 331,
+            "precision": 0.6062
+        }
+    ],
+    "objective-c": [
+        {
+            "token": "in objective",
+            "coverage": 406,
+            "precision": 0.9042
+        },
+        {
+            "token": "in objective c",
+            "coverage": 406,
+            "precision": 0.9042
+        },
+        {
+            "token": "objective c",
+            "coverage": 812,
+            "precision": 0.8826
+        },
+        {
+            "token": "objective",
+            "coverage": 813,
+            "precision": 0.8531
+        },
+        {
+            "token": "nsobject",
+            "coverage": 213,
+            "precision": 0.7717
+        },
+        {
+            "token": "@interface",
+            "coverage": 297,
+            "precision": 0.7538
+        },
+        {
+            "token": "@implementation",
+            "coverage": 229,
+            "precision": 0.7435
+        },
+        {
+            "token": "@end",
+            "coverage": 270,
+            "precision": 0.7377
+        },
+        {
+            "token": "@end <",
+            "coverage": 225,
+            "precision": 0.7377
+        },
+        {
+            "token": "@end < code",
+            "coverage": 222,
+            "precision": 0.7375
+        },
+        {
+            "token": "@property",
+            "coverage": 221,
+            "precision": 0.6994
+        },
+        {
+            "token": ". m",
+            "coverage": 225,
+            "precision": 0.5754
+        },
+        {
+            "token": "init ]",
+            "coverage": 336,
+            "precision": 0.5572
+        },
+        {
+            "token": "] init ]",
+            "coverage": 322,
+            "precision": 0.5523
+        },
+        {
+            "token": "] init",
+            "coverage": 323,
+            "precision": 0.5503
+        },
+        {
+            "token": "alloc ] init",
+            "coverage": 320,
+            "precision": 0.5498
+        },
+        {
+            "token": "nsstring",
+            "coverage": 530,
+            "precision": 0.5453
+        },
+        {
+            "token": "nslog (",
+            "coverage": 365,
+            "precision": 0.5391
+        },
+        {
+            "token": "nslog",
+            "coverage": 377,
+            "precision": 0.5378
+        }
+    ],
+    ".net": [
+        {
+            "token": "in . net",
+            "coverage": 318,
+            "precision": 0.9164
+        }
+    ],
+    "python": [
+        {
+            "token": "in range (",
+            "coverage": 204,
+            "precision": 0.9951
+        },
+        {
+            "token": "python i",
+            "coverage": 277,
+            "precision": 0.9858
+        },
+        {
+            "token": "for i in",
+            "coverage": 203,
+            "precision": 0.9854
+        },
+        {
+            "token": ". py",
+            "coverage": 275,
+            "precision": 0.9786
+        },
+        {
+            "token": "in python",
+            "coverage": 554,
+            "precision": 0.9754
+        },
+        {
+            "token": "py",
+            "coverage": 281,
+            "precision": 0.9558
+        },
+        {
+            "token": "len (",
+            "coverage": 211,
+            "precision": 0.9505
+        },
+        {
+            "token": "python",
+            "coverage": 1446,
+            "precision": 0.9494
+        },
+        {
+            "token": "in range",
+            "coverage": 209,
+            "precision": 0.9289
+        },
+        {
+            "token": "range (",
+            "coverage": 216,
+            "precision": 0.9076
+        },
+        {
+            "token": ") print",
+            "coverage": 360,
+            "precision": 0.8451
+        },
+        {
+            "token": "for i",
+            "coverage": 214,
+            "precision": 0.8263
+        },
+        {
+            "token": "i in",
+            "coverage": 205,
+            "precision": 0.7428
+        },
+        {
+            "token": "len",
+            "coverage": 219,
+            "precision": 0.6844
+        },
+        {
+            "token": "print (",
+            "coverage": 391,
+            "precision": 0.6206
+        },
+        {
+            "token": ". append",
+            "coverage": 219,
+            "precision": 0.584
+        },
+        {
+            "token": ". append (",
+            "coverage": 201,
+            "precision": 0.5826
+        },
+        {
+            "token": "open (",
+            "coverage": 284,
+            "precision": 0.5558
+        }
+    ],
+    "angularjs": [
+        {
+            "token": "angular .",
+            "coverage": 659,
+            "precision": 1.0
+        },
+        {
+            "token": "angular . module",
+            "coverage": 453,
+            "precision": 1.0
+        },
+        {
+            "token": ". module (",
+            "coverage": 452,
+            "precision": 1.0
+        },
+        {
+            "token": "{ $scope",
+            "coverage": 426,
+            "precision": 1.0
+        },
+        {
+            "token": "{ $scope .",
+            "coverage": 425,
+            "precision": 1.0
+        },
+        {
+            "token": ") { $scope",
+            "coverage": 388,
+            "precision": 1.0
+        },
+        {
+            "token": "function ( $scope",
+            "coverage": 375,
+            "precision": 1.0
+        },
+        {
+            "token": "ng controller",
+            "coverage": 276,
+            "precision": 1.0
+        },
+        {
+            "token": "ng app",
+            "coverage": 213,
+            "precision": 1.0
+        },
+        {
+            "token": "ng repeat",
+            "coverage": 424,
+            "precision": 0.9976
+        },
+        {
+            "token": ". controller (",
+            "coverage": 359,
+            "precision": 0.9972
+        },
+        {
+            "token": "$http",
+            "coverage": 339,
+            "precision": 0.9971
+        },
+        {
+            "token": "div ng",
+            "coverage": 334,
+            "precision": 0.997
+        },
+        {
+            "token": "lt div ng",
+            "coverage": 334,
+            "precision": 0.997
+        },
+        {
+            "token": "$http .",
+            "coverage": 203,
+            "precision": 0.9951
+        },
+        {
+            "token": "( $scope",
+            "coverage": 548,
+            "precision": 0.9946
+        },
+        {
+            "token": "$scope",
+            "coverage": 882,
+            "precision": 0.9944
+        },
+        {
+            "token": "$scope .",
+            "coverage": 803,
+            "precision": 0.9938
+        },
+        {
+            "token": "angularjs",
+            "coverage": 1004,
+            "precision": 0.9911
+        },
+        {
+            "token": "angular",
+            "coverage": 1231,
+            "precision": 0.9895
+        },
+        {
+            "token": "ng model",
+            "coverage": 437,
+            "precision": 0.9887
+        },
+        {
+            "token": "in angular",
+            "coverage": 240,
+            "precision": 0.9877
+        },
+        {
+            "token": "> $scope",
+            "coverage": 314,
+            "precision": 0.9874
+        },
+        {
+            "token": "code > $scope",
+            "coverage": 309,
+            "precision": 0.9872
+        },
+        {
+            "token": "> $scope .",
+            "coverage": 296,
+            "precision": 0.9867
+        },
+        {
+            "token": "ng",
+            "coverage": 1092,
+            "precision": 0.9838
+        },
+        {
+            "token": "in angularjs",
+            "coverage": 295,
+            "precision": 0.9833
+        },
+        {
+            "token": ". module",
+            "coverage": 457,
+            "precision": 0.9828
+        },
+        {
+            "token": "ng click",
+            "coverage": 314,
+            "precision": 0.9782
+        },
+        {
+            "token": "module (",
+            "coverage": 457,
+            "precision": 0.9744
+        },
+        {
+            "token": ". controller",
+            "coverage": 366,
+            "precision": 0.9708
+        },
+        {
+            "token": "}} lt",
+            "coverage": 449,
+            "precision": 0.9635
+        },
+        {
+            "token": "gt {{",
+            "coverage": 426,
+            "precision": 0.9616
+        },
+        {
+            "token": "controller (",
+            "coverage": 442,
+            "precision": 0.9465
+        },
+        {
+            "token": "{{",
+            "coverage": 571,
+            "precision": 0.9136
+        },
+        {
+            "token": "directive",
+            "coverage": 324,
+            "precision": 0.8663
+        },
+        {
+            "token": "return {",
+            "coverage": 228,
+            "precision": 0.8604
+        },
+        {
+            "token": "}}",
+            "coverage": 573,
+            "precision": 0.7958
+        },
+        {
+            "token": "repeat",
+            "coverage": 433,
+            "precision": 0.5712
+        },
+        {
+            "token": "scope",
+            "coverage": 338,
+            "precision": 0.5633
+        },
+        {
+            "token": "( function (",
+            "coverage": 375,
+            "precision": 0.558
+        },
+        {
+            "token": "module",
+            "coverage": 508,
+            "precision": 0.5399
+        }
+    ],
+    "iphone": [
+        {
+            "token": "in iphone",
+            "coverage": 305,
+            "precision": 0.8221
+        },
+        {
+            "token": "iphone",
+            "coverage": 1045,
+            "precision": 0.7257
+        }
+    ],
+    "ruby-on-rails": [
+        {
+            "token": ". rb",
+            "coverage": 429,
+            "precision": 1.0
+        },
+        {
+            "token": "lt activerecord",
+            "coverage": 258,
+            "precision": 1.0
+        },
+        {
+            "token": "has_many",
+            "coverage": 250,
+            "precision": 1.0
+        },
+        {
+            "token": "activerecord base",
+            "coverage": 240,
+            "precision": 1.0
+        },
+        {
+            "token": "lt activerecord base",
+            "coverage": 237,
+            "precision": 1.0
+        },
+        {
+            "token": "belongs_to",
+            "coverage": 236,
+            "precision": 1.0
+        },
+        {
+            "token": ". each do",
+            "coverage": 205,
+            "precision": 1.0
+        },
+        {
+            "token": ". rb <",
+            "coverage": 201,
+            "precision": 1.0
+        },
+        {
+            "token": "activerecord",
+            "coverage": 362,
+            "precision": 0.9972
+        },
+        {
+            "token": "html . erb",
+            "coverage": 241,
+            "precision": 0.9959
+        },
+        {
+            "token": "end gt <",
+            "coverage": 225,
+            "precision": 0.9956
+        },
+        {
+            "token": "lt end gt",
+            "coverage": 296,
+            "precision": 0.9933
+        },
+        {
+            "token": "erb",
+            "coverage": 271,
+            "precision": 0.9927
+        },
+        {
+            "token": ". erb",
+            "coverage": 256,
+            "precision": 0.9922
+        },
+        {
+            "token": "rb <",
+            "coverage": 201,
+            "precision": 0.9901
+        },
+        {
+            "token": "end end <",
+            "coverage": 425,
+            "precision": 0.9884
+        },
+        {
+            "token": "each do",
+            "coverage": 219,
+            "precision": 0.9865
+        },
+        {
+            "token": "ruby on",
+            "coverage": 252,
+            "precision": 0.9844
+        },
+        {
+            "token": "ruby on rails",
+            "coverage": 250,
+            "precision": 0.9843
+        },
+        {
+            "token": "in rails",
+            "coverage": 368,
+            "precision": 0.984
+        },
+        {
+            "token": "on rails",
+            "coverage": 284,
+            "precision": 0.9827
+        },
+        {
+            "token": "redirect_to",
+            "coverage": 222,
+            "precision": 0.9823
+        },
+        {
+            "token": "rails",
+            "coverage": 1464,
+            "precision": 0.9819
+        },
+        {
+            "token": "end end",
+            "coverage": 464,
+            "precision": 0.9748
+        },
+        {
+            "token": "( params [",
+            "coverage": 247,
+            "precision": 0.9686
+        },
+        {
+            "token": "ruby",
+            "coverage": 424,
+            "precision": 0.9422
+        },
+        {
+            "token": "end gt",
+            "coverage": 300,
+            "precision": 0.9404
+        },
+        {
+            "token": "params [",
+            "coverage": 361,
+            "precision": 0.9328
+        },
+        {
+            "token": "end < code",
+            "coverage": 820,
+            "precision": 0.8932
+        },
+        {
+            "token": "( params",
+            "coverage": 251,
+            "precision": 0.8838
+        },
+        {
+            "token": "end <",
+            "coverage": 822,
+            "precision": 0.8754
+        },
+        {
+            "token": "rb",
+            "coverage": 431,
+            "precision": 0.8725
+        },
+        {
+            "token": ". new",
+            "coverage": 239,
+            "precision": 0.8691
+        },
+        {
+            "token": ". html .",
+            "coverage": 259,
+            "precision": 0.8633
+        },
+        {
+            "token": "gt lt end",
+            "coverage": 287,
+            "precision": 0.8542
+        },
+        {
+            "token": "models",
+            "coverage": 230,
+            "precision": 0.8303
+        },
+        {
+            "token": "lt end",
+            "coverage": 298,
+            "precision": 0.8209
+        },
+        {
+            "token": "routes",
+            "coverage": 201,
+            "precision": 0.7643
+        },
+        {
+            "token": "params",
+            "coverage": 416,
+            "precision": 0.7111
+        },
+        {
+            "token": ". find (",
+            "coverage": 222,
+            "precision": 0.6607
+        },
+        {
+            "token": "render",
+            "coverage": 317,
+            "precision": 0.6496
+        },
+        {
+            "token": ". find",
+            "coverage": 231,
+            "precision": 0.6226
+        },
+        {
+            "token": ") end",
+            "coverage": 232,
+            "precision": 0.617
+        },
+        {
+            "token": "html .",
+            "coverage": 267,
+            "precision": 0.5483
+        },
+        {
+            "token": "code > def",
+            "coverage": 340,
+            "precision": 0.5475
+        },
+        {
+            "token": "> def",
+            "coverage": 343,
+            "precision": 0.5453
+        },
+        {
+            "token": "f .",
+            "coverage": 205,
+            "precision": 0.5243
+        }
+    ],
+    "ios": [
+        {
+            "token": "in ios",
+            "coverage": 291,
+            "precision": 0.7973
+        },
+        {
+            "token": "ios",
+            "coverage": 981,
+            "precision": 0.7682
+        }
+    ],
+    "c": [
+        {
+            "token": "} printf",
+            "coverage": 237,
+            "precision": 0.9634
+        },
+        {
+            "token": "} printf (",
+            "coverage": 237,
+            "precision": 0.9634
+        },
+        {
+            "token": "( d amp",
+            "coverage": 232,
+            "precision": 0.9627
+        },
+        {
+            "token": "scanf ( d",
+            "coverage": 256,
+            "precision": 0.9588
+        },
+        {
+            "token": "printf ( d",
+            "coverage": 263,
+            "precision": 0.9564
+        },
+        {
+            "token": ") { printf",
+            "coverage": 327,
+            "precision": 0.9451
+        },
+        {
+            "token": ") scanf",
+            "coverage": 295,
+            "precision": 0.9425
+        },
+        {
+            "token": ") scanf (",
+            "coverage": 295,
+            "precision": 0.9425
+        },
+        {
+            "token": "stdio .",
+            "coverage": 734,
+            "precision": 0.941
+        },
+        {
+            "token": "stdio . h",
+            "coverage": 734,
+            "precision": 0.941
+        },
+        {
+            "token": "#include lt stdio",
+            "coverage": 709,
+            "precision": 0.9403
+        },
+        {
+            "token": "stdio",
+            "coverage": 735,
+            "precision": 0.9399
+        },
+        {
+            "token": "lt stdio",
+            "coverage": 716,
+            "precision": 0.9396
+        },
+        {
+            "token": "lt stdio .",
+            "coverage": 716,
+            "precision": 0.9396
+        },
+        {
+            "token": "h gt int",
+            "coverage": 382,
+            "precision": 0.9363
+        },
+        {
+            "token": ") printf (",
+            "coverage": 516,
+            "precision": 0.9331
+        },
+        {
+            "token": ") printf",
+            "coverage": 517,
+            "precision": 0.9315
+        },
+        {
+            "token": "scanf (",
+            "coverage": 397,
+            "precision": 0.9297
+        },
+        {
+            "token": "scanf",
+            "coverage": 409,
+            "precision": 0.9274
+        },
+        {
+            "token": "d amp",
+            "coverage": 276,
+            "precision": 0.9262
+        },
+        {
+            "token": "{ printf",
+            "coverage": 419,
+            "precision": 0.9148
+        },
+        {
+            "token": "{ printf (",
+            "coverage": 419,
+            "precision": 0.9148
+        },
+        {
+            "token": "d n",
+            "coverage": 252,
+            "precision": 0.9097
+        },
+        {
+            "token": "malloc (",
+            "coverage": 219,
+            "precision": 0.9087
+        },
+        {
+            "token": "#include lt stdlib",
+            "coverage": 285,
+            "precision": 0.9048
+        },
+        {
+            "token": "lt stdlib",
+            "coverage": 289,
+            "precision": 0.9031
+        },
+        {
+            "token": "lt stdlib .",
+            "coverage": 289,
+            "precision": 0.9031
+        },
+        {
+            "token": "stdlib .",
+            "coverage": 296,
+            "precision": 0.8997
+        },
+        {
+            "token": "stdlib . h",
+            "coverage": 296,
+            "precision": 0.8997
+        },
+        {
+            "token": "stdlib",
+            "coverage": 296,
+            "precision": 0.897
+        },
+        {
+            "token": "printf (",
+            "coverage": 1098,
+            "precision": 0.8934
+        },
+        {
+            "token": "printf",
+            "coverage": 1112,
+            "precision": 0.8882
+        },
+        {
+            "token": "malloc",
+            "coverage": 246,
+            "precision": 0.8786
+        },
+        {
+            "token": "h gt #include",
+            "coverage": 434,
+            "precision": 0.8697
+        },
+        {
+            "token": "gt int main",
+            "coverage": 309,
+            "precision": 0.8583
+        },
+        {
+            "token": "gt int",
+            "coverage": 383,
+            "precision": 0.8149
+        },
+        {
+            "token": "sizeof (",
+            "coverage": 308,
+            "precision": 0.7113
+        },
+        {
+            "token": "sizeof",
+            "coverage": 327,
+            "precision": 0.7093
+        },
+        {
+            "token": ". h gt",
+            "coverage": 734,
+            "precision": 0.6957
+        },
+        {
+            "token": "{ char",
+            "coverage": 288,
+            "precision": 0.6957
+        },
+        {
+            "token": "h gt",
+            "coverage": 734,
+            "precision": 0.686
+        },
+        {
+            "token": ") return 0",
+            "coverage": 321,
+            "precision": 0.683
+        },
+        {
+            "token": "int main (",
+            "coverage": 320,
+            "precision": 0.6226
+        },
+        {
+            "token": "for ( i",
+            "coverage": 354,
+            "precision": 0.6093
+        },
+        {
+            "token": "( d",
+            "coverage": 453,
+            "precision": 0.6081
+        },
+        {
+            "token": "( char",
+            "coverage": 260,
+            "precision": 0.6061
+        },
+        {
+            "token": "( i 0",
+            "coverage": 289,
+            "precision": 0.5959
+        },
+        {
+            "token": "> #include lt",
+            "coverage": 673,
+            "precision": 0.5627
+        },
+        {
+            "token": "() { int",
+            "coverage": 238,
+            "precision": 0.5484
+        },
+        {
+            "token": "struct",
+            "coverage": 332,
+            "precision": 0.5425
+        },
+        {
+            "token": "> #include",
+            "coverage": 708,
+            "precision": 0.5405
+        },
+        {
+            "token": "code > #include",
+            "coverage": 708,
+            "precision": 0.5405
+        },
+        {
+            "token": "#include lt",
+            "coverage": 726,
+            "precision": 0.5315
+        },
+        {
+            "token": "gt #include lt",
+            "coverage": 429,
+            "precision": 0.5303
+        },
+        {
+            "token": "gt #include",
+            "coverage": 436,
+            "precision": 0.5228
+        },
+        {
+            "token": "#include",
+            "coverage": 757,
+            "precision": 0.521
+        },
+        {
+            "token": "int main",
+            "coverage": 792,
+            "precision": 0.509
+        },
+        {
+            "token": ". h",
+            "coverage": 800,
+            "precision": 0.5079
+        },
+        {
+            "token": "return 0 }",
+            "coverage": 562,
+            "precision": 0.5045
+        }
+    ],
+    "sql": [
+        {
+            "token": "in sql",
+            "coverage": 303,
+            "precision": 0.8016
+        },
+        {
+            "token": "sql query",
+            "coverage": 348,
+            "precision": 0.7803
+        },
+        {
+            "token": "sql",
+            "coverage": 1354,
+            "precision": 0.6525
+        },
+        {
+            "token": "group by",
+            "coverage": 327,
+            "precision": 0.5142
+        },
+        {
+            "token": "code > select",
+            "coverage": 834,
+            "precision": 0.5067
+        },
+        {
+            "token": "> select",
+            "coverage": 847,
+            "precision": 0.5042
+        }
+    ],
+    "java": [
+        {
+            "token": "new scanner",
+            "coverage": 243,
+            "precision": 1.0
+        },
+        {
+            "token": "new scanner (",
+            "coverage": 243,
+            "precision": 1.0
+        },
+        {
+            "token": "scanner ( system",
+            "coverage": 205,
+            "precision": 1.0
+        },
+        {
+            "token": ". in )",
+            "coverage": 206,
+            "precision": 0.9904
+        },
+        {
+            "token": "scanner (",
+            "coverage": 244,
+            "precision": 0.9879
+        },
+        {
+            "token": "system . in",
+            "coverage": 220,
+            "precision": 0.9865
+        },
+        {
+            "token": "> import java",
+            "coverage": 233,
+            "precision": 0.9472
+        },
+        {
+            "token": ". println",
+            "coverage": 723,
+            "precision": 0.9222
+        },
+        {
+            "token": "out . println",
+            "coverage": 710,
+            "precision": 0.9221
+        },
+        {
+            "token": "system . out",
+            "coverage": 768,
+            "precision": 0.9209
+        },
+        {
+            "token": ". out .",
+            "coverage": 766,
+            "precision": 0.9207
+        },
+        {
+            "token": ". println (",
+            "coverage": 706,
+            "precision": 0.9205
+        },
+        {
+            "token": "println",
+            "coverage": 731,
+            "precision": 0.9172
+        },
+        {
+            "token": "println (",
+            "coverage": 713,
+            "precision": 0.9153
+        },
+        {
+            "token": "scanner",
+            "coverage": 253,
+            "precision": 0.9134
+        },
+        {
+            "token": "import java",
+            "coverage": 332,
+            "precision": 0.883
+        },
+        {
+            "token": "import java .",
+            "coverage": 331,
+            "precision": 0.8827
+        },
+        {
+            "token": "() system .",
+            "coverage": 206,
+            "precision": 0.8729
+        },
+        {
+            "token": ") system .",
+            "coverage": 356,
+            "precision": 0.8683
+        },
+        {
+            "token": "public static void",
+            "coverage": 596,
+            "precision": 0.86
+        },
+        {
+            "token": ". out",
+            "coverage": 771,
+            "precision": 0.8576
+        },
+        {
+            "token": "java . util",
+            "coverage": 280,
+            "precision": 0.8537
+        },
+        {
+            "token": "{ system .",
+            "coverage": 330,
+            "precision": 0.8312
+        },
+        {
+            "token": "in java",
+            "coverage": 456,
+            "precision": 0.8291
+        },
+        {
+            "token": ") { system",
+            "coverage": 205,
+            "precision": 0.82
+        },
+        {
+            "token": "() system",
+            "coverage": 206,
+            "precision": 0.8142
+        },
+        {
+            "token": "{ system",
+            "coverage": 330,
+            "precision": 0.8108
+        },
+        {
+            "token": ". util .",
+            "coverage": 285,
+            "precision": 0.7787
+        },
+        {
+            "token": ". util",
+            "coverage": 285,
+            "precision": 0.7766
+        },
+        {
+            "token": ") system",
+            "coverage": 356,
+            "precision": 0.7756
+        },
+        {
+            "token": "main ( string",
+            "coverage": 541,
+            "precision": 0.7729
+        },
+        {
+            "token": "void main (",
+            "coverage": 545,
+            "precision": 0.7687
+        },
+        {
+            "token": "util .",
+            "coverage": 286,
+            "precision": 0.7668
+        },
+        {
+            "token": "{ public static",
+            "coverage": 360,
+            "precision": 0.7627
+        },
+        {
+            "token": "in )",
+            "coverage": 213,
+            "precision": 0.758
+        },
+        {
+            "token": "util",
+            "coverage": 293,
+            "precision": 0.7571
+        },
+        {
+            "token": "static void main",
+            "coverage": 549,
+            "precision": 0.7469
+        },
+        {
+            "token": "( system .",
+            "coverage": 230,
+            "precision": 0.7468
+        },
+        {
+            "token": "string [] args",
+            "coverage": 439,
+            "precision": 0.7317
+        },
+        {
+            "token": "[] args",
+            "coverage": 440,
+            "precision": 0.7273
+        },
+        {
+            "token": "( string []",
+            "coverage": 447,
+            "precision": 0.7233
+        },
+        {
+            "token": "( system",
+            "coverage": 230,
+            "precision": 0.7187
+        },
+        {
+            "token": "[] args )",
+            "coverage": 381,
+            "precision": 0.703
+        },
+        {
+            "token": "public static",
+            "coverage": 682,
+            "precision": 0.682
+        },
+        {
+            "token": "java",
+            "coverage": 1328,
+            "precision": 0.6779
+        },
+        {
+            "token": "static void",
+            "coverage": 601,
+            "precision": 0.6776
+        },
+        {
+            "token": "java .",
+            "coverage": 531,
+            "precision": 0.6764
+        },
+        {
+            "token": "void main",
+            "coverage": 553,
+            "precision": 0.6514
+        },
+        {
+            "token": "args ) {",
+            "coverage": 326,
+            "precision": 0.6494
+        },
+        {
+            "token": "out .",
+            "coverage": 779,
+            "precision": 0.6422
+        },
+        {
+            "token": "args",
+            "coverage": 542,
+            "precision": 0.6399
+        },
+        {
+            "token": "args )",
+            "coverage": 391,
+            "precision": 0.6306
+        },
+        {
+            "token": "string []",
+            "coverage": 498,
+            "precision": 0.5589
+        }
+    ],
+    "jquery": [
+        {
+            "token": "jquery i",
+            "coverage": 228,
+            "precision": 0.9421
+        },
+        {
+            "token": "> ( document",
+            "coverage": 239,
+            "precision": 0.8819
+        },
+        {
+            "token": "( this ).",
+            "coverage": 509,
+            "precision": 0.8806
+        },
+        {
+            "token": "click ( function",
+            "coverage": 375,
+            "precision": 0.8721
+        },
+        {
+            "token": "). click (",
+            "coverage": 365,
+            "precision": 0.867
+        },
+        {
+            "token": "this ).",
+            "coverage": 521,
+            "precision": 0.8597
+        },
+        {
+            "token": "). click",
+            "coverage": 373,
+            "precision": 0.8535
+        },
+        {
+            "token": "using jquery",
+            "coverage": 278,
+            "precision": 0.845
+        },
+        {
+            "token": "(){ (",
+            "coverage": 222,
+            "precision": 0.8441
+        },
+        {
+            "token": "function (){ (",
+            "coverage": 215,
+            "precision": 0.8431
+        },
+        {
+            "token": "). attr (",
+            "coverage": 223,
+            "precision": 0.8352
+        },
+        {
+            "token": "). attr",
+            "coverage": 227,
+            "precision": 0.8346
+        },
+        {
+            "token": "click (",
+            "coverage": 381,
+            "precision": 0.8337
+        },
+        {
+            "token": "() { (",
+            "coverage": 347,
+            "precision": 0.8262
+        },
+        {
+            "token": "attr (",
+            "coverage": 256,
+            "precision": 0.7975
+        },
+        {
+            "token": "). ready (",
+            "coverage": 342,
+            "precision": 0.7898
+        },
+        {
+            "token": "ready (",
+            "coverage": 344,
+            "precision": 0.789
+        },
+        {
+            "token": "ready ( function",
+            "coverage": 339,
+            "precision": 0.7884
+        },
+        {
+            "token": "document ). ready",
+            "coverage": 344,
+            "precision": 0.7872
+        },
+        {
+            "token": "( document ).",
+            "coverage": 394,
+            "precision": 0.7864
+        },
+        {
+            "token": "). ready",
+            "coverage": 346,
+            "precision": 0.7846
+        },
+        {
+            "token": "document ).",
+            "coverage": 394,
+            "precision": 0.7833
+        },
+        {
+            "token": "{ (",
+            "coverage": 549,
+            "precision": 0.77
+        },
+        {
+            "token": "jquery",
+            "coverage": 1583,
+            "precision": 0.7688
+        },
+        {
+            "token": "each (",
+            "coverage": 214,
+            "precision": 0.7589
+        },
+        {
+            "token": "). val",
+            "coverage": 209,
+            "precision": 0.7518
+        },
+        {
+            "token": "}) }) <",
+            "coverage": 266,
+            "precision": 0.7472
+        },
+        {
+            "token": ") { (",
+            "coverage": 214,
+            "precision": 0.7431
+        },
+        {
+            "token": "( function (){",
+            "coverage": 361,
+            "precision": 0.7051
+        },
+        {
+            "token": "jquery .",
+            "coverage": 308,
+            "precision": 0.7032
+        },
+        {
+            "token": "( function ()",
+            "coverage": 536,
+            "precision": 0.6854
+        },
+        {
+            "token": "}) })",
+            "coverage": 403,
+            "precision": 0.6596
+        },
+        {
+            "token": "attr",
+            "coverage": 265,
+            "precision": 0.6527
+        },
+        {
+            "token": "ready",
+            "coverage": 365,
+            "precision": 0.637
+        },
+        {
+            "token": "( document",
+            "coverage": 401,
+            "precision": 0.6365
+        },
+        {
+            "token": "( .",
+            "coverage": 574,
+            "precision": 0.574
+        },
+        {
+            "token": ") })",
+            "coverage": 489,
+            "precision": 0.5739
+        },
+        {
+            "token": "function (){",
+            "coverage": 433,
+            "precision": 0.5386
+        },
+        {
+            "token": "( function",
+            "coverage": 936,
+            "precision": 0.533
+        },
+        {
+            "token": "}) < code",
+            "coverage": 794,
+            "precision": 0.5133
+        },
+        {
+            "token": "}) <",
+            "coverage": 799,
+            "precision": 0.5132
+        }
+    ],
+    "css": [
+        {
+            "token": "css < pre",
+            "coverage": 234,
+            "precision": 0.7697
+        },
+        {
+            "token": "css <",
+            "coverage": 325,
+            "precision": 0.7593
+        },
+        {
+            "token": "{ background",
+            "coverage": 337,
+            "precision": 0.7522
+        },
+        {
+            "token": "{ width",
+            "coverage": 269,
+            "precision": 0.741
+        },
+        {
+            "token": "margin 0",
+            "coverage": 212,
+            "precision": 0.731
+        },
+        {
+            "token": "display inline",
+            "coverage": 206,
+            "precision": 0.7228
+        },
+        {
+            "token": "{ display",
+            "coverage": 243,
+            "precision": 0.7064
+        },
+        {
+            "token": "position relative",
+            "coverage": 232,
+            "precision": 0.7052
+        },
+        {
+            "token": "the css",
+            "coverage": 215,
+            "precision": 0.6981
+        },
+        {
+            "token": ">< code >.",
+            "coverage": 394,
+            "precision": 0.69
+        },
+        {
+            "token": "float left",
+            "coverage": 270,
+            "precision": 0.6818
+        },
+        {
+            "token": "1px",
+            "coverage": 260,
+            "precision": 0.6616
+        },
+        {
+            "token": "} .",
+            "coverage": 362,
+            "precision": 0.6594
+        },
+        {
+            "token": "position absolute",
+            "coverage": 238,
+            "precision": 0.6538
+        },
+        {
+            "token": "solid",
+            "coverage": 319,
+            "precision": 0.628
+        },
+        {
+            "token": "10px",
+            "coverage": 238,
+            "precision": 0.6263
+        },
+        {
+            "token": "css",
+            "coverage": 1502,
+            "precision": 0.6141
+        },
+        {
+            "token": "margin",
+            "coverage": 574,
+            "precision": 0.6132
+        },
+        {
+            "token": "padding",
+            "coverage": 479,
+            "precision": 0.6033
+        },
+        {
+            "token": "text align",
+            "coverage": 250,
+            "precision": 0.5882
+        },
+        {
+            "token": "display block",
+            "coverage": 201,
+            "precision": 0.5759
+        },
+        {
+            "token": "absolute",
+            "coverage": 266,
+            "precision": 0.5542
+        },
+        {
+            "token": "font size",
+            "coverage": 263,
+            "precision": 0.5491
+        },
+        {
+            "token": "inline",
+            "coverage": 256,
+            "precision": 0.5458
+        },
+        {
+            "token": "relative",
+            "coverage": 261,
+            "precision": 0.5415
+        },
+        {
+            "token": "hover",
+            "coverage": 217,
+            "precision": 0.5267
+        },
+        {
+            "token": "background color",
+            "coverage": 339,
+            "precision": 0.5183
+        },
+        {
+            "token": "border",
+            "coverage": 497,
+            "precision": 0.5156
+        },
+        {
+            "token": "width 100",
+            "coverage": 237,
+            "precision": 0.5053
+        },
+        {
+            "token": "overflow",
+            "coverage": 211,
+            "precision": 0.5012
+        }
+    ],
+    "c++": [
+        {
+            "token": ") cout",
+            "coverage": 206,
+            "precision": 1.0
+        },
+        {
+            "token": ") cout lt",
+            "coverage": 205,
+            "precision": 1.0
+        },
+        {
+            "token": "endl }",
+            "coverage": 283,
+            "precision": 0.9965
+        },
+        {
+            "token": "endl",
+            "coverage": 527,
+            "precision": 0.9962
+        },
+        {
+            "token": "lt endl }",
+            "coverage": 237,
+            "precision": 0.9958
+        },
+        {
+            "token": "lt endl",
+            "coverage": 450,
+            "precision": 0.9956
+        },
+        {
+            "token": "lt lt endl",
+            "coverage": 450,
+            "precision": 0.9956
+        },
+        {
+            "token": "cout lt",
+            "coverage": 749,
+            "precision": 0.9934
+        },
+        {
+            "token": "cout lt lt",
+            "coverage": 749,
+            "precision": 0.9934
+        },
+        {
+            "token": "cout",
+            "coverage": 756,
+            "precision": 0.9908
+        },
+        {
+            "token": "cin gt",
+            "coverage": 281,
+            "precision": 0.9894
+        },
+        {
+            "token": "cin gt gt",
+            "coverage": 281,
+            "precision": 0.9894
+        },
+        {
+            "token": "{ cout",
+            "coverage": 277,
+            "precision": 0.9893
+        },
+        {
+            "token": "{ cout lt",
+            "coverage": 276,
+            "precision": 0.9892
+        },
+        {
+            "token": "#include lt iostream",
+            "coverage": 539,
+            "precision": 0.989
+        },
+        {
+            "token": "gt using namespace",
+            "coverage": 420,
+            "precision": 0.9882
+        },
+        {
+            "token": "iostream gt #include",
+            "coverage": 324,
+            "precision": 0.9878
+        },
+        {
+            "token": "namespace std int",
+            "coverage": 240,
+            "precision": 0.9877
+        },
+        {
+            "token": "std int",
+            "coverage": 240,
+            "precision": 0.9877
+        },
+        {
+            "token": "lt iostream",
+            "coverage": 542,
+            "precision": 0.9872
+        },
+        {
+            "token": "iostream gt",
+            "coverage": 538,
+            "precision": 0.9872
+        },
+        {
+            "token": "lt iostream gt",
+            "coverage": 538,
+            "precision": 0.9872
+        },
+        {
+            "token": "namespace std",
+            "coverage": 486,
+            "precision": 0.9858
+        },
+        {
+            "token": "using namespace std",
+            "coverage": 484,
+            "precision": 0.9857
+        },
+        {
+            "token": "std int main",
+            "coverage": 200,
+            "precision": 0.9852
+        },
+        {
+            "token": "using namespace",
+            "coverage": 490,
+            "precision": 0.9839
+        },
+        {
+            "token": "iostream",
+            "coverage": 551,
+            "precision": 0.9804
+        },
+        {
+            "token": "cin",
+            "coverage": 343,
+            "precision": 0.98
+        },
+        {
+            "token": "gt using",
+            "coverage": 433,
+            "precision": 0.9796
+        },
+        {
+            "token": "std",
+            "coverage": 849,
+            "precision": 0.9615
+        },
+        {
+            "token": ". cpp",
+            "coverage": 219,
+            "precision": 0.9522
+        },
+        {
+            "token": "cpp",
+            "coverage": 254,
+            "precision": 0.9203
+        },
+        {
+            "token": "vector",
+            "coverage": 228,
+            "precision": 0.8261
+        },
+        {
+            "token": "( const",
+            "coverage": 218,
+            "precision": 0.7814
+        },
+        {
+            "token": "lt lt",
+            "coverage": 817,
+            "precision": 0.7722
+        },
+        {
+            "token": "namespace",
+            "coverage": 516,
+            "precision": 0.6042
+        },
+        {
+            "token": "} int main",
+            "coverage": 231,
+            "precision": 0.6016
+        },
+        {
+            "token": "const",
+            "coverage": 419,
+            "precision": 0.5399
+        },
+        {
+            "token": "int main ()",
+            "coverage": 489,
+            "precision": 0.5397
+        }
+    ],
+    "php": [
+        {
+            "token": "php i",
+            "coverage": 259,
+            "precision": 0.9184
+        },
+        {
+            "token": "isset (",
+            "coverage": 213,
+            "precision": 0.9181
+        },
+        {
+            "token": "> lt php",
+            "coverage": 425,
+            "precision": 0.914
+        },
+        {
+            "token": "{ echo",
+            "coverage": 274,
+            "precision": 0.9133
+        },
+        {
+            "token": "isset",
+            "coverage": 218,
+            "precision": 0.9046
+        },
+        {
+            "token": "$_post",
+            "coverage": 278,
+            "precision": 0.8797
+        },
+        {
+            "token": "$_post [",
+            "coverage": 255,
+            "precision": 0.8793
+        },
+        {
+            "token": "in php",
+            "coverage": 401,
+            "precision": 0.8478
+        },
+        {
+            "token": "echo lt",
+            "coverage": 202,
+            "precision": 0.8452
+        },
+        {
+            "token": "lt php",
+            "coverage": 541,
+            "precision": 0.8172
+        },
+        {
+            "token": "echo",
+            "coverage": 773,
+            "precision": 0.8111
+        },
+        {
+            "token": "php <",
+            "coverage": 219,
+            "precision": 0.7578
+        },
+        {
+            "token": "array (",
+            "coverage": 293,
+            "precision": 0.7181
+        },
+        {
+            "token": "php",
+            "coverage": 1643,
+            "precision": 0.6712
+        },
+        {
+            "token": ". php",
+            "coverage": 553,
+            "precision": 0.5631
+        },
+        {
+            "token": "} gt",
+            "coverage": 277,
+            "precision": 0.5485
+        }
+    ],
+    "android": [
+        {
+            "token": "new intent",
+            "coverage": 226,
+            "precision": 0.9956
+        },
+        {
+            "token": "intent (",
+            "coverage": 204,
+            "precision": 0.9951
+        },
+        {
+            "token": "new intent (",
+            "coverage": 204,
+            "precision": 0.9951
+        },
+        {
+            "token": "r . layout",
+            "coverage": 341,
+            "precision": 0.9942
+        },
+        {
+            "token": ". oncreate",
+            "coverage": 293,
+            "precision": 0.9932
+        },
+        {
+            "token": "savedinstancestate",
+            "coverage": 293,
+            "precision": 0.9932
+        },
+        {
+            "token": "bundle savedinstancestate",
+            "coverage": 292,
+            "precision": 0.9932
+        },
+        {
+            "token": "savedinstancestate )",
+            "coverage": 291,
+            "precision": 0.9932
+        },
+        {
+            "token": "oncreate (",
+            "coverage": 290,
+            "precision": 0.9932
+        },
+        {
+            "token": "void oncreate",
+            "coverage": 286,
+            "precision": 0.9931
+        },
+        {
+            "token": "bundle savedinstancestate )",
+            "coverage": 285,
+            "precision": 0.993
+        },
+        {
+            "token": "savedinstancestate ) {",
+            "coverage": 285,
+            "precision": 0.993
+        },
+        {
+            "token": ". oncreate (",
+            "coverage": 282,
+            "precision": 0.993
+        },
+        {
+            "token": "super . oncreate",
+            "coverage": 277,
+            "precision": 0.9928
+        },
+        {
+            "token": "void oncreate (",
+            "coverage": 274,
+            "precision": 0.9928
+        },
+        {
+            "token": "setcontentview",
+            "coverage": 271,
+            "precision": 0.9927
+        },
+        {
+            "token": "( bundle savedinstancestate",
+            "coverage": 269,
+            "precision": 0.9926
+        },
+        {
+            "token": "setcontentview (",
+            "coverage": 268,
+            "precision": 0.9926
+        },
+        {
+            "token": "oncreate ( bundle",
+            "coverage": 267,
+            "precision": 0.9926
+        },
+        {
+            "token": "( savedinstancestate",
+            "coverage": 266,
+            "precision": 0.9925
+        },
+        {
+            "token": "( savedinstancestate )",
+            "coverage": 266,
+            "precision": 0.9925
+        },
+        {
+            "token": "oncreate ( savedinstancestate",
+            "coverage": 260,
+            "precision": 0.9924
+        },
+        {
+            "token": "setcontentview ( r",
+            "coverage": 250,
+            "precision": 0.9921
+        },
+        {
+            "token": ") setcontentview",
+            "coverage": 241,
+            "precision": 0.9918
+        },
+        {
+            "token": ") setcontentview (",
+            "coverage": 241,
+            "precision": 0.9918
+        },
+        {
+            "token": "findviewbyid",
+            "coverage": 342,
+            "precision": 0.9913
+        },
+        {
+            "token": "findviewbyid (",
+            "coverage": 341,
+            "precision": 0.9913
+        },
+        {
+            "token": "oncreate",
+            "coverage": 331,
+            "precision": 0.991
+        },
+        {
+            "token": "findviewbyid ( r",
+            "coverage": 329,
+            "precision": 0.991
+        },
+        {
+            "token": "savedinstancestate ) setcontentview",
+            "coverage": 221,
+            "precision": 0.991
+        },
+        {
+            "token": "( bundle",
+            "coverage": 280,
+            "precision": 0.9894
+        },
+        {
+            "token": ". android .",
+            "coverage": 338,
+            "precision": 0.9883
+        },
+        {
+            "token": ") findviewbyid",
+            "coverage": 254,
+            "precision": 0.9883
+        },
+        {
+            "token": ") findviewbyid (",
+            "coverage": 254,
+            "precision": 0.9883
+        },
+        {
+            "token": "@override protected void",
+            "coverage": 209,
+            "precision": 0.9858
+        },
+        {
+            "token": "@override protected",
+            "coverage": 214,
+            "precision": 0.9817
+        },
+        {
+            "token": ". android",
+            "coverage": 351,
+            "precision": 0.9804
+        },
+        {
+            "token": ". layout .",
+            "coverage": 341,
+            "precision": 0.9771
+        },
+        {
+            "token": "android i",
+            "coverage": 205,
+            "precision": 0.9762
+        },
+        {
+            "token": "android .",
+            "coverage": 610,
+            "precision": 0.9744
+        },
+        {
+            "token": "apk",
+            "coverage": 205,
+            "precision": 0.9716
+        },
+        {
+            "token": ". layout",
+            "coverage": 345,
+            "precision": 0.9691
+        },
+        {
+            "token": "r . id",
+            "coverage": 376,
+            "precision": 0.9666
+        },
+        {
+            "token": "intent",
+            "coverage": 333,
+            "precision": 0.9569
+        },
+        {
+            "token": "in android",
+            "coverage": 428,
+            "precision": 0.9554
+        },
+        {
+            "token": "android",
+            "coverage": 1494,
+            "precision": 0.9426
+        },
+        {
+            "token": "onclick (",
+            "coverage": 209,
+            "precision": 0.9414
+        },
+        {
+            "token": "( r .",
+            "coverage": 454,
+            "precision": 0.9322
+        },
+        {
+            "token": ". id .",
+            "coverage": 376,
+            "precision": 0.9284
+        },
+        {
+            "token": "( view",
+            "coverage": 282,
+            "precision": 0.9068
+        },
+        {
+            "token": ") { super",
+            "coverage": 307,
+            "precision": 0.9003
+        },
+        {
+            "token": "{ super .",
+            "coverage": 294,
+            "precision": 0.8991
+        },
+        {
+            "token": "layout .",
+            "coverage": 372,
+            "precision": 0.8878
+        },
+        {
+            "token": "textview",
+            "coverage": 275,
+            "precision": 0.8758
+        },
+        {
+            "token": "super .",
+            "coverage": 353,
+            "precision": 0.8716
+        },
+        {
+            "token": "{ @override",
+            "coverage": 254,
+            "precision": 0.8699
+        },
+        {
+            "token": "activity",
+            "coverage": 572,
+            "precision": 0.8614
+        },
+        {
+            "token": "@override public void",
+            "coverage": 342,
+            "precision": 0.8593
+        },
+        {
+            "token": "{ @override public",
+            "coverage": 221,
+            "precision": 0.8566
+        },
+        {
+            "token": "@override",
+            "coverage": 474,
+            "precision": 0.851
+        },
+        {
+            "token": "} @override",
+            "coverage": 230,
+            "precision": 0.8487
+        },
+        {
+            "token": "settext (",
+            "coverage": 204,
+            "precision": 0.8465
+        },
+        {
+            "token": "{ super",
+            "coverage": 327,
+            "precision": 0.8406
+        },
+        {
+            "token": "@override public",
+            "coverage": 402,
+            "precision": 0.8375
+        },
+        {
+            "token": "r .",
+            "coverage": 504,
+            "precision": 0.779
+        },
+        {
+            "token": "log .",
+            "coverage": 210,
+            "precision": 0.7343
+        },
+        {
+            "token": "settext",
+            "coverage": 206,
+            "precision": 0.7203
+        },
+        {
+            "token": "( r",
+            "coverage": 457,
+            "precision": 0.7152
+        },
+        {
+            "token": "extends",
+            "coverage": 364,
+            "precision": 0.6276
+        },
+        {
+            "token": "com .",
+            "coverage": 307,
+            "precision": 0.6116
+        },
+        {
+            "token": "id .",
+            "coverage": 380,
+            "precision": 0.6032
+        },
+        {
+            "token": "layout",
+            "coverage": 471,
+            "precision": 0.5682
+        },
+        {
+            "token": "bundle",
+            "coverage": 322,
+            "precision": 0.5467
+        },
+        {
+            "token": "protected void",
+            "coverage": 256,
+            "precision": 0.51
+        }
+    ],
+    "mysql": [
+        {
+            "token": "in mysql",
+            "coverage": 380,
+            "precision": 0.95
+        },
+        {
+            "token": "mysql",
+            "coverage": 1489,
+            "precision": 0.8548
+        },
+        {
+            "token": "varchar",
+            "coverage": 205,
+            "precision": 0.5694
+        },
+        {
+            "token": "query <",
+            "coverage": 230,
+            "precision": 0.5489
+        },
+        {
+            "token": "order by",
+            "coverage": 282,
+            "precision": 0.5045
+        }
+    ],
+    "javascript": [
+        {
+            "token": "in javascript",
+            "coverage": 359,
+            "precision": 0.8609
+        },
+        {
+            "token": "javascript i",
+            "coverage": 232,
+            "precision": 0.8593
+        },
+        {
+            "token": "document . getelementbyid",
+            "coverage": 366,
+            "precision": 0.7233
+        },
+        {
+            "token": ". getelementbyid (",
+            "coverage": 366,
+            "precision": 0.7219
+        },
+        {
+            "token": ". getelementbyid",
+            "coverage": 368,
+            "precision": 0.7202
+        },
+        {
+            "token": "getelementbyid (",
+            "coverage": 367,
+            "precision": 0.7182
+        },
+        {
+            "token": "getelementbyid",
+            "coverage": 370,
+            "precision": 0.7143
+        },
+        {
+            "token": "document .",
+            "coverage": 591,
+            "precision": 0.6574
+        },
+        {
+            "token": "for ( var",
+            "coverage": 211,
+            "precision": 0.6492
+        },
+        {
+            "token": "var i",
+            "coverage": 204,
+            "precision": 0.622
+        },
+        {
+            "token": "javascript",
+            "coverage": 1311,
+            "precision": 0.5887
+        }
+    ],
+    "html": [
+        {
+            "token": "in html",
+            "coverage": 294,
+            "precision": 0.7443
+        }
+    ]
+}
