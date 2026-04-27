@@ -124,6 +124,7 @@ class TextXGBClassifier(BaseEstimator, ClassifierMixin):
         reg_lambda: float = 1.0,
         gamma: float = 0.0,
         tree_method: str = "hist",
+        max_bin: int = 256,
         n_jobs: int = 1,
         random_state: int = RANDOM_STATE,
         verbosity: int = 0,
@@ -137,6 +138,7 @@ class TextXGBClassifier(BaseEstimator, ClassifierMixin):
         self.reg_lambda = reg_lambda
         self.gamma = gamma
         self.tree_method = tree_method
+        self.max_bin = max_bin
         self.n_jobs = n_jobs
         self.random_state = random_state
         self.verbosity = verbosity
@@ -150,6 +152,7 @@ class TextXGBClassifier(BaseEstimator, ClassifierMixin):
         self.label_encoder_ = LabelEncoder()
         y_encoded = self.label_encoder_.fit_transform(np.asarray(y_train))
         self.classes_ = self.label_encoder_.classes_
+        x_train = x_train.astype(np.float32, copy=False)
         self.model_ = XGBClassifier(
             objective="multi:softprob",
             num_class=len(self.classes_),
@@ -163,6 +166,7 @@ class TextXGBClassifier(BaseEstimator, ClassifierMixin):
             reg_lambda=self.reg_lambda,
             gamma=self.gamma,
             tree_method=self.tree_method,
+            max_bin=self.max_bin,
             n_jobs=self.n_jobs,
             random_state=self.random_state,
             verbosity=self.verbosity,
@@ -171,11 +175,13 @@ class TextXGBClassifier(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, x_test):
+        x_test = x_test.astype(np.float32, copy=False)
         predictions = self.model_.predict(x_test)
         predictions = np.asarray(predictions, dtype=int)
         return self.label_encoder_.inverse_transform(predictions)
 
     def predict_proba(self, x_test):
+        x_test = x_test.astype(np.float32, copy=False)
         return self.model_.predict_proba(x_test)
 
 
@@ -262,6 +268,7 @@ def build_xgb_classifier():
         subsample=1.0,
         colsample_bytree=0.8,
         tree_method="hist",
+        max_bin=256,
         n_jobs=1,
         random_state=RANDOM_STATE,
         verbosity=0,
@@ -391,7 +398,7 @@ def build_search(
         cv=cv,
         n_jobs=n_jobs,
         refit=True,
-        return_train_score=True,
+        return_train_score=False,
     )
 
 
