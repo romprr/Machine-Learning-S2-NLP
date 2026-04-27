@@ -55,6 +55,14 @@ MODEL_CV_REPEAT_OVERRIDES = {
     "xgb_classifier": 1,
 }
 
+MODEL_N_JOBS_OVERRIDES = {
+    "xgb_classifier": 1,
+}
+
+MODEL_PRE_DISPATCH_OVERRIDES = {
+    "xgb_classifier": 1,
+}
+
 MODEL_CV_FOLD_OVERRIDES = {
     "logistic_regression": 3,
     "decision_tree": 3,
@@ -141,15 +149,15 @@ DEEP_MODEL_PARAM_GRIDS = {
     },
     "logistic_regression": [
         {
-            "logisticregression__C": [0.25, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0],
+            "logisticregression__C": [0.5, 1.0, 2.0, 4.0],
             "logisticregression__class_weight": [None, "balanced"],
             "logisticregression__penalty": ["l2"],
         },
         {
-            "logisticregression__C": [0.25, 0.5, 1.0, 2.0],
+            "logisticregression__C": [0.5, 1.0, 2.0],
             "logisticregression__class_weight": [None, "balanced"],
             "logisticregression__penalty": ["elasticnet"],
-            "logisticregression__l1_ratio": [0.15, 0.5, 0.85],
+            "logisticregression__l1_ratio": [0.15, 0.5],
         },
     ],
     "linear_svc": {
@@ -364,6 +372,20 @@ def build_cv_strategy(cv_folds: int, cv_repeats: int):
     return StratifiedKFold(n_splits=cv_folds, shuffle=True, random_state=RANDOM_STATE)
 
 
+def resolve_gridsearch_n_jobs(model_name: str, requested_n_jobs: int) -> int:
+    if model_name in MODEL_N_JOBS_OVERRIDES:
+        return MODEL_N_JOBS_OVERRIDES[model_name]
+    return requested_n_jobs
+
+
+def resolve_gridsearch_pre_dispatch(model_name: str, effective_n_jobs: int):
+    if model_name in MODEL_PRE_DISPATCH_OVERRIDES:
+        return MODEL_PRE_DISPATCH_OVERRIDES[model_name]
+    if isinstance(effective_n_jobs, int) and effective_n_jobs > 0:
+        return effective_n_jobs
+    return "2*n_jobs"
+
+
 def run_grid_search(
     *,
     model_name: str,
@@ -377,14 +399,17 @@ def run_grid_search(
     search_verbose: int,
 ):
     cv = build_cv_strategy(cv_folds, cv_repeats)
+    effective_n_jobs = resolve_gridsearch_n_jobs(model_name, n_jobs)
+    pre_dispatch = resolve_gridsearch_pre_dispatch(model_name, effective_n_jobs)
     search = GridSearchCV(
         estimator=build_model(model_name),
         param_grid=param_grid,
         scoring=scoring,
         cv=cv,
-        n_jobs=n_jobs,
+        n_jobs=effective_n_jobs,
+        pre_dispatch=pre_dispatch,
         refit=True,
-        return_train_score=True,
+        return_train_score=False,
         verbose=search_verbose,
     )
     started_at = perf_counter()
@@ -395,7 +420,15 @@ def run_grid_search(
         ["rank_test_score", "mean_test_score"],
         ascending=[True, False],
     )
-    return search.best_estimator_, fit_time_seconds, search.best_score_, search.best_params_, cv_results_df
+    return (
+        search.best_estimator_,
+        fit_time_seconds,
+        search.best_score_,
+        search.best_params_,
+        cv_results_df,
+        effective_n_jobs,
+        pre_dispatch,
+    )
 
 
 def aggregate_existing_metric_outputs(
@@ -504,12 +537,15 @@ def tune_vectorization_models(
         effective_cv_folds = MODEL_CV_FOLD_OVERRIDES.get(model_name, cv_folds)
         effective_cv_repeats = MODEL_CV_REPEAT_OVERRIDES.get(model_name, cv_repeats)
         effective_refine_rounds = MODEL_REFINE_ROUND_OVERRIDES.get(model_name, refine_rounds)
+        effective_gridsearch_n_jobs = resolve_gridsearch_n_jobs(model_name, n_jobs)
+        effective_pre_dispatch = resolve_gridsearch_pre_dispatch(model_name, effective_gridsearch_n_jobs)
 
         log_progress(
             f"Starting model {model_index}/{total_models}: {model_name}. "
             f"Initial grid size={estimate_grid_size(param_grid)}, "
             f"cv_folds={effective_cv_folds}, cv_repeats={effective_cv_repeats}, "
-            f"refine_rounds={effective_refine_rounds}."
+            f"refine_rounds={effective_refine_rounds}, gridsearch_n_jobs={effective_gridsearch_n_jobs}, "
+            f"pre_dispatch={effective_pre_dispatch}."
         )
 
         model = None
@@ -525,7 +561,15 @@ def tune_vectorization_models(
                 f"{model_name} {round_name}: searching {estimate_grid_size(current_grid)} combinations "
                 f"({estimate_grid_size(current_grid) * effective_cv_folds * effective_cv_repeats} CV fits)."
             )
-            model, round_fit_time, best_cv_score, best_params, cv_results_df = run_grid_search(
+            (
+                model,
+                round_fit_time,
+                best_cv_score,
+                best_params,
+                cv_results_df,
+                effective_gridsearch_n_jobs,
+                effective_pre_dispatch,
+            ) = run_grid_search(
                 model_name=model_name,
                 param_grid=current_grid,
                 x_train=x_train,
@@ -547,6 +591,8 @@ def tune_vectorization_models(
                     "param_grid_size": estimate_grid_size(current_grid),
                     "cv_folds": effective_cv_folds,
                     "cv_repeats": effective_cv_repeats,
+                    "gridsearch_n_jobs": effective_gridsearch_n_jobs,
+                    "pre_dispatch": effective_pre_dispatch,
                     "best_cv_score": float(best_cv_score) if best_cv_score is not None else None,
                     "best_params": best_params,
                     "fit_time_seconds": round(round_fit_time, 4),
