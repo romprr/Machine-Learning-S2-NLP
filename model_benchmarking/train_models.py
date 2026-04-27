@@ -6,16 +6,25 @@ from pathlib import Path
 from time import perf_counter
 
 import joblib
+import numpy as np
 import pandas as pd
 from scipy.sparse import load_npz
+from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.ensemble import VotingClassifier
 from sklearn.linear_model import LogisticRegression, PassiveAggressiveClassifier, RidgeClassifier, SGDClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, precision_recall_fscore_support
 from sklearn.model_selection import GridSearchCV, StratifiedKFold
 from sklearn.naive_bayes import ComplementNB, MultinomialNB
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import MaxAbsScaler
+from sklearn.preprocessing import LabelEncoder, MaxAbsScaler
 from sklearn.svm import LinearSVC
+from sklearn.tree import DecisionTreeClassifier
+
+try:
+    from xgboost import XGBClassifier
+except ImportError:
+    XGBClassifier = None
 
 try:
     from .pipeline_paths import MODELS_OUTPUT_DIR, VECTORIZATION_OUTPUT_DIR, ensure_pipeline_directories
@@ -32,6 +41,9 @@ BASE_MODELS = (
     "linear_svc",
     "sgd_classifier",
     "passive_aggressive",
+    "decision_tree",
+    "knn",
+    "xgb_classifier",
 )
 ENSEMBLE_MODELS = ("hard_voting_ensemble",)
 SUPPORTED_MODELS = BASE_MODELS + ENSEMBLE_MODELS
@@ -74,12 +86,97 @@ MODEL_PARAM_GRIDS = {
         "loss": ["hinge", "squared_hinge"],
         "class_weight": [None, "balanced"],
     },
+    "decision_tree": {
+        "max_depth": [20, 40, None],
+        "min_samples_split": [2, 10, 20],
+        "min_samples_leaf": [1, 5, 10],
+        "criterion": ["gini", "entropy"],
+    },
+    "knn": {
+        "n_neighbors": [5, 11, 21],
+        "weights": ["uniform", "distance"],
+        "metric": ["cosine", "euclidean"],
+    },
+    "xgb_classifier": {
+        "n_estimators": [100, 200],
+        "max_depth": [4, 6],
+        "learning_rate": [0.05, 0.1],
+        "subsample": [0.8, 1.0],
+        "colsample_bytree": [0.6, 0.8],
+    },
     "hard_voting_ensemble": {
         "nb__alpha": [0.3, 0.8],
         "lr__logisticregression__C": [1.0, 2.0],
         "svc__C": [0.5, 1.0],
     },
 }
+
+
+class TextXGBClassifier(BaseEstimator, ClassifierMixin):
+    def __init__(
+        self,
+        n_estimators: int = 200,
+        max_depth: int = 6,
+        learning_rate: float = 0.1,
+        subsample: float = 1.0,
+        colsample_bytree: float = 1.0,
+        min_child_weight: float = 1.0,
+        reg_lambda: float = 1.0,
+        gamma: float = 0.0,
+        tree_method: str = "hist",
+        n_jobs: int = 1,
+        random_state: int = RANDOM_STATE,
+        verbosity: int = 0,
+    ):
+        self.n_estimators = n_estimators
+        self.max_depth = max_depth
+        self.learning_rate = learning_rate
+        self.subsample = subsample
+        self.colsample_bytree = colsample_bytree
+        self.min_child_weight = min_child_weight
+        self.reg_lambda = reg_lambda
+        self.gamma = gamma
+        self.tree_method = tree_method
+        self.n_jobs = n_jobs
+        self.random_state = random_state
+        self.verbosity = verbosity
+
+    def fit(self, x_train, y_train):
+        if XGBClassifier is None:
+            raise ImportError(
+                "xgboost is not installed in the current environment. Install it before using xgb_classifier."
+            )
+
+        self.label_encoder_ = LabelEncoder()
+        y_encoded = self.label_encoder_.fit_transform(np.asarray(y_train))
+        self.classes_ = self.label_encoder_.classes_
+        self.model_ = XGBClassifier(
+            objective="multi:softprob",
+            num_class=len(self.classes_),
+            eval_metric="mlogloss",
+            n_estimators=self.n_estimators,
+            max_depth=self.max_depth,
+            learning_rate=self.learning_rate,
+            subsample=self.subsample,
+            colsample_bytree=self.colsample_bytree,
+            min_child_weight=self.min_child_weight,
+            reg_lambda=self.reg_lambda,
+            gamma=self.gamma,
+            tree_method=self.tree_method,
+            n_jobs=self.n_jobs,
+            random_state=self.random_state,
+            verbosity=self.verbosity,
+        )
+        self.model_.fit(x_train, y_encoded)
+        return self
+
+    def predict(self, x_test):
+        predictions = self.model_.predict(x_test)
+        predictions = np.asarray(predictions, dtype=int)
+        return self.label_encoder_.inverse_transform(predictions)
+
+    def predict_proba(self, x_test):
+        return self.model_.predict_proba(x_test)
 
 
 def is_base_model(model_name: str) -> bool:
@@ -141,6 +238,36 @@ def build_passive_aggressive():
     )
 
 
+def build_decision_tree():
+    return DecisionTreeClassifier(
+        random_state=RANDOM_STATE,
+    )
+
+
+def build_knn():
+    return KNeighborsClassifier(
+        n_neighbors=11,
+        weights="distance",
+        metric="cosine",
+        algorithm="brute",
+        n_jobs=1,
+    )
+
+
+def build_xgb_classifier():
+    return TextXGBClassifier(
+        n_estimators=200,
+        max_depth=6,
+        learning_rate=0.1,
+        subsample=1.0,
+        colsample_bytree=0.8,
+        tree_method="hist",
+        n_jobs=1,
+        random_state=RANDOM_STATE,
+        verbosity=0,
+    )
+
+
 def build_hard_voting_ensemble():
     return make_hard_voting_ensemble(DEFAULT_ENSEMBLE_COMPONENTS)
 
@@ -166,6 +293,15 @@ def build_model(model_name: str):
 
     if model_name == "passive_aggressive":
         return build_passive_aggressive()
+
+    if model_name == "decision_tree":
+        return build_decision_tree()
+
+    if model_name == "knn":
+        return build_knn()
+
+    if model_name == "xgb_classifier":
+        return build_xgb_classifier()
 
     if model_name == "hard_voting_ensemble":
         return build_hard_voting_ensemble()

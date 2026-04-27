@@ -46,6 +46,28 @@ DEFAULT_SEARCH_CV_FOLDS = 5
 DEFAULT_DEEP_CV_REPEATS = 2
 DEFAULT_REFINE_ROUNDS = 2
 DEFAULT_SEARCH_VERBOSE = 2
+DEFAULT_AGGREGATE_METRIC = "macro_f1"
+
+MODEL_CV_REPEAT_OVERRIDES = {
+    "logistic_regression": 1,
+    "decision_tree": 1,
+    "knn": 1,
+    "xgb_classifier": 1,
+}
+
+MODEL_CV_FOLD_OVERRIDES = {
+    "logistic_regression": 3,
+    "decision_tree": 3,
+    "knn": 3,
+    "xgb_classifier": 3,
+}
+
+MODEL_REFINE_ROUND_OVERRIDES = {
+    "logistic_regression": 1,
+    "decision_tree": 1,
+    "knn": 1,
+    "xgb_classifier": 1,
+}
 
 SEARCH_PROFILES = ("standard", "deep")
 
@@ -84,6 +106,24 @@ STANDARD_MODEL_PARAM_GRIDS = {
         "loss": ["hinge", "squared_hinge"],
         "class_weight": [None, "balanced"],
     },
+    "decision_tree": {
+        "max_depth": [20, 40, None],
+        "min_samples_split": [2, 10, 20],
+        "min_samples_leaf": [1, 5, 10],
+        "criterion": ["gini", "entropy"],
+    },
+    "knn": {
+        "n_neighbors": [5, 11, 21],
+        "weights": ["uniform", "distance"],
+        "metric": ["cosine", "euclidean"],
+    },
+    "xgb_classifier": {
+        "n_estimators": [100, 200],
+        "max_depth": [4, 6],
+        "learning_rate": [0.05, 0.1],
+        "subsample": [0.8, 1.0],
+        "colsample_bytree": [0.6, 0.8],
+    },
 }
 
 DEEP_MODEL_PARAM_GRIDS = {
@@ -101,15 +141,15 @@ DEEP_MODEL_PARAM_GRIDS = {
     },
     "logistic_regression": [
         {
-            "logisticregression__C": [0.05, 0.1, 0.25, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0, 8.0],
+            "logisticregression__C": [0.25, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0],
             "logisticregression__class_weight": [None, "balanced"],
             "logisticregression__penalty": ["l2"],
         },
         {
-            "logisticregression__C": [0.05, 0.1, 0.25, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0],
+            "logisticregression__C": [0.25, 0.5, 1.0, 2.0],
             "logisticregression__class_weight": [None, "balanced"],
             "logisticregression__penalty": ["elasticnet"],
-            "logisticregression__l1_ratio": [0.15, 0.3, 0.5, 0.7, 0.85],
+            "logisticregression__l1_ratio": [0.15, 0.5, 0.85],
         },
     ],
     "linear_svc": {
@@ -144,6 +184,27 @@ DEEP_MODEL_PARAM_GRIDS = {
         "class_weight": [None, "balanced"],
         "average": [False, True],
     },
+    "decision_tree": {
+        "max_depth": [10, 20, None],
+        "min_samples_split": [2, 10, 20],
+        "min_samples_leaf": [1, 5, 10],
+        "criterion": ["gini", "entropy"],
+        "ccp_alpha": [0.0],
+    },
+    "knn": {
+        "n_neighbors": [5, 11, 21],
+        "weights": ["distance"],
+        "metric": ["cosine", "euclidean"],
+    },
+    "xgb_classifier": {
+        "n_estimators": [100, 200],
+        "max_depth": [4, 6],
+        "learning_rate": [0.05, 0.1],
+        "subsample": [0.8, 1.0],
+        "colsample_bytree": [0.6, 0.8],
+        "min_child_weight": [1.0],
+        "reg_lambda": [1.0, 3.0],
+    },
 }
 
 
@@ -171,6 +232,13 @@ def estimate_grid_size(param_grid: dict[str, list[object]] | list[dict[str, list
 
 def log_progress(message: str) -> None:
     print(f"[params_search] {message}", flush=True)
+
+
+def infer_run_name(metrics_path: Path, aggregate_root: Path) -> str:
+    relative_parts = metrics_path.relative_to(aggregate_root).parts
+    if len(relative_parts) >= 4:
+        return relative_parts[0]
+    return ""
 
 
 def get_param_grid(model_name: str, search_profile: str) -> dict[str, list[object]] | list[dict[str, list[object]]]:
@@ -330,6 +398,54 @@ def run_grid_search(
     return search.best_estimator_, fit_time_seconds, search.best_score_, search.best_params_, cv_results_df
 
 
+def aggregate_existing_metric_outputs(
+    *,
+    output_dir: Path | str = MODEL_FINETUNING_OUTPUT_DIR,
+    metric_name: str = DEFAULT_AGGREGATE_METRIC,
+    summary_filename: str | None = None,
+) -> Path:
+    aggregate_root = Path(output_dir)
+    if not aggregate_root.exists():
+        raise FileNotFoundError(f"Could not find fine-tuning output directory: {aggregate_root}")
+
+    metrics_paths = sorted(aggregate_root.rglob("metrics.json"))
+    if not metrics_paths:
+        raise FileNotFoundError(f"No metrics.json files found under: {aggregate_root}")
+
+    aggregated_rows: list[dict[str, object]] = []
+    for metrics_path in metrics_paths:
+        payload = json.loads(metrics_path.read_text(encoding="utf-8"))
+        if metric_name not in payload:
+            raise KeyError(f"Metric {metric_name!r} was not found in: {metrics_path}")
+
+        aggregated_rows.append(
+            {
+                "run_name": infer_run_name(metrics_path, aggregate_root),
+                "vectorization": payload.get("vectorization", ""),
+                "model": payload.get("model", ""),
+                metric_name: payload[metric_name],
+                "accuracy": payload.get("accuracy"),
+                "micro_f1": payload.get("micro_f1"),
+                "macro_f1": payload.get("macro_f1"),
+                "weighted_f1": payload.get("weighted_f1"),
+                "best_cv_score": payload.get("best_cv_score"),
+                "fit_time_seconds": payload.get("fit_time_seconds"),
+                "metrics_path": str(metrics_path.resolve()),
+            }
+        )
+
+    summary_df = pd.DataFrame(aggregated_rows).sort_values(
+        [metric_name, "accuracy", "micro_f1", "model"],
+        ascending=[False, False, False, True],
+    )
+
+    filename = summary_filename or f"aggregate_{metric_name}_summary.csv"
+    summary_path = aggregate_root / filename
+    summary_df.to_csv(summary_path, index=False)
+    log_progress(f"Saved aggregated metric summary to: {summary_path.resolve()}")
+    return summary_path
+
+
 def tune_vectorization_models(
     *,
     vectorization_name: str = DEFAULT_VECTORIZATION,
@@ -385,10 +501,15 @@ def tune_vectorization_models(
         model_output_dir.mkdir(parents=True, exist_ok=True)
         param_grid = get_param_grid(model_name, search_profile)
         search_history: list[dict[str, object]] = []
+        effective_cv_folds = MODEL_CV_FOLD_OVERRIDES.get(model_name, cv_folds)
+        effective_cv_repeats = MODEL_CV_REPEAT_OVERRIDES.get(model_name, cv_repeats)
+        effective_refine_rounds = MODEL_REFINE_ROUND_OVERRIDES.get(model_name, refine_rounds)
 
         log_progress(
             f"Starting model {model_index}/{total_models}: {model_name}. "
-            f"Initial grid size={estimate_grid_size(param_grid)}."
+            f"Initial grid size={estimate_grid_size(param_grid)}, "
+            f"cv_folds={effective_cv_folds}, cv_repeats={effective_cv_repeats}, "
+            f"refine_rounds={effective_refine_rounds}."
         )
 
         model = None
@@ -398,19 +519,19 @@ def tune_vectorization_models(
         cv_results_df = None
 
         current_grid = param_grid
-        for round_index in range(refine_rounds):
+        for round_index in range(effective_refine_rounds):
             round_name = "round_1" if round_index == 0 else f"round_{round_index + 1}"
             log_progress(
                 f"{model_name} {round_name}: searching {estimate_grid_size(current_grid)} combinations "
-                f"({estimate_grid_size(current_grid) * cv_folds * cv_repeats} CV fits)."
+                f"({estimate_grid_size(current_grid) * effective_cv_folds * effective_cv_repeats} CV fits)."
             )
             model, round_fit_time, best_cv_score, best_params, cv_results_df = run_grid_search(
                 model_name=model_name,
                 param_grid=current_grid,
                 x_train=x_train,
                 y_train=y_train,
-                cv_folds=cv_folds,
-                cv_repeats=cv_repeats,
+                cv_folds=effective_cv_folds,
+                cv_repeats=effective_cv_repeats,
                 scoring=scoring,
                 n_jobs=n_jobs,
                 search_verbose=search_verbose,
@@ -424,6 +545,8 @@ def tune_vectorization_models(
                     "round": round_name,
                     "param_grid": current_grid,
                     "param_grid_size": estimate_grid_size(current_grid),
+                    "cv_folds": effective_cv_folds,
+                    "cv_repeats": effective_cv_repeats,
                     "best_cv_score": float(best_cv_score) if best_cv_score is not None else None,
                     "best_params": best_params,
                     "fit_time_seconds": round(round_fit_time, 4),
@@ -434,7 +557,7 @@ def tune_vectorization_models(
                 f"best_cv_score={best_cv_score:.6f}, best_params={json.dumps(best_params, sort_keys=True)}"
             )
 
-            if round_index >= refine_rounds - 1:
+            if round_index >= effective_refine_rounds - 1:
                 break
 
             refined_grid = build_refined_param_grid(
@@ -457,7 +580,7 @@ def tune_vectorization_models(
             labels=labels,
             vectorization_name=vectorization_name,
             tune_hyperparameters=True,
-            cv_folds=cv_folds,
+            cv_folds=effective_cv_folds,
             scoring=scoring,
             best_cv_score=best_cv_score,
             best_params=best_params,
@@ -582,6 +705,20 @@ def build_argument_parser() -> argparse.ArgumentParser:
         "--run-name",
         help="Optional subfolder name inside model_finetuning to keep multiple tuning runs separate.",
     )
+    parser.add_argument(
+        "--aggregate-only",
+        action="store_true",
+        help="Skip fine-tuning and only aggregate one metric from existing metrics.json outputs.",
+    )
+    parser.add_argument(
+        "--aggregate-metric",
+        default=DEFAULT_AGGREGATE_METRIC,
+        help="Metric name to aggregate in aggregate-only mode, for example macro_f1 or accuracy.",
+    )
+    parser.add_argument(
+        "--aggregate-summary-filename",
+        help="Optional filename for the aggregate-only summary CSV written inside the output directory.",
+    )
     return parser
 
 
@@ -589,18 +726,26 @@ if __name__ == "__main__":
     parser = build_argument_parser()
     arguments = parser.parse_args()
 
-    summary_path = tune_vectorization_models(
-        vectorization_name=arguments.vectorization,
-        vectorization_output_dir=arguments.vectorization_dir,
-        output_dir=arguments.output_dir,
-        model_names=tuple(arguments.models),
-        cv_folds=arguments.cv_folds,
-        cv_repeats=arguments.cv_repeats,
-        scoring=arguments.scoring,
-        n_jobs=arguments.n_jobs,
-        run_name=arguments.run_name,
-        search_profile=arguments.search_profile,
-        refine_rounds=arguments.refine_rounds,
-        search_verbose=arguments.search_verbose,
-    )
-    print(f"Saved fine-tuning summary to: {summary_path.resolve()}")
+    if arguments.aggregate_only:
+        summary_path = aggregate_existing_metric_outputs(
+            output_dir=arguments.output_dir,
+            metric_name=arguments.aggregate_metric,
+            summary_filename=arguments.aggregate_summary_filename,
+        )
+        print(f"Saved aggregated summary to: {summary_path.resolve()}")
+    else:
+        summary_path = tune_vectorization_models(
+            vectorization_name=arguments.vectorization,
+            vectorization_output_dir=arguments.vectorization_dir,
+            output_dir=arguments.output_dir,
+            model_names=tuple(arguments.models),
+            cv_folds=arguments.cv_folds,
+            cv_repeats=arguments.cv_repeats,
+            scoring=arguments.scoring,
+            n_jobs=arguments.n_jobs,
+            run_name=arguments.run_name,
+            search_profile=arguments.search_profile,
+            refine_rounds=arguments.refine_rounds,
+            search_verbose=arguments.search_verbose,
+        )
+        print(f"Saved fine-tuning summary to: {summary_path.resolve()}")
