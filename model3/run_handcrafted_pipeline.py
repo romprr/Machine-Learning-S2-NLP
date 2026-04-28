@@ -14,26 +14,35 @@ def load_all_data():
     raw_df = pd.read_csv(RAW_DATA_PATH)
     
     # Map back to raw data to get 'post' column for handcrafted features
-    # Assuming row_id matches index in raw_df or we use it to filter
     raw_train_df = raw_df.iloc[train_df["row_id"].values].reset_index(drop=True)
     raw_test_df = raw_df.iloc[test_df["row_id"].values].reset_index(drop=True)
     
     return train_df, test_df, raw_train_df, raw_test_df
 
 def main():
-    parser = argparse.ArgumentParser(description="Run Model 3 Pipeline")
+    parser = argparse.ArgumentParser(description="Run Model 3 Pipeline with Handcrafted Features Only")
     parser.add_argument("--tune", action="store_true", help="Run hyperparameter tuning")
     args = parser.parse_args()
+
+    # Define Handcrafted Output Directory
+    HC_OUTPUT_DIR = OUTPUT_DIR / "handcrafted_only"
+    HC_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     # 1. Load data
     train_df, test_df, raw_train_df, raw_test_df = load_all_data()
 
-    # 2. Feature Pipeline
-    pipeline = FeaturePipeline()
+    # 2. Feature Pipeline with Handcrafted features ONLY
+    print("Initializing pipeline (handcrafted features only)...")
+    
+    # use_text_features=False removes TF-IDF or CountVectorizer text features completely
+    pipeline = FeaturePipeline(use_text_features=False)
     X_train, y_train = pipeline.fit_transform(train_df, raw_train_df)
     X_test, y_test = pipeline.transform(test_df, raw_test_df)
     
-    pipeline.save()
+    pipeline.save(
+        scaler_path=HC_OUTPUT_DIR / "scaler.joblib",
+        label_encoder_path=HC_OUTPUT_DIR / "label_encoder.joblib"
+    )
 
     # 3. Tuning (Optional)
     params = None
@@ -45,10 +54,16 @@ def main():
     trainer.train(X_train, y_train)
     
     # 5. Evaluation
-    trainer.evaluate(X_test, y_test, label_encoder=pipeline.label_encoder, output_dir=OUTPUT_DIR)
+    trainer.evaluate(
+        X_test, 
+        y_test, 
+        label_encoder=pipeline.label_encoder, 
+        vectorization_name="handcrafted_only", 
+        output_dir=HC_OUTPUT_DIR
+    )
     
     # 6. Save Model
-    trainer.save()
+    trainer.save(path=HC_OUTPUT_DIR / "logistic_regression_model.joblib")
 
 if __name__ == "__main__":
     main()

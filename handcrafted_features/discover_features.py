@@ -70,7 +70,7 @@ def main():
         
     df = pd.read_csv(RAW_DATA_PATH)
     
-    candidates = discover_best_ngrams(df, min_coverage=200, min_precision=0.5)
+    candidates = discover_best_ngrams(df, min_coverage=200, min_precision=0.6)
     
     total_found = sum(len(c) for c in candidates.values())
     print(f"\nDiscovery complete! Found {total_found} strong candidate features across all tags.")

@@ -14,20 +14,26 @@ from .config import (
 )
 
 class FeaturePipeline:
-    def __init__(self, vectorizer=None, scaler=None, label_encoder=None):
-        self.vectorizer = vectorizer or CountVectorizer(
-            lowercase=False,
-            preprocessor=None,
-            tokenizer=None,
-            token_pattern=TOKEN_PATTERN,
-            ngram_range=(1, 2),
-            min_df=2,
-            max_df=0.95,
-            binary=True,
-        )
+    def __init__(self, vectorizer=None, scaler=None, label_encoder=None, include_generic_text_stats=True, use_text_features=True):
+        self.use_text_features = use_text_features
+        
+        if self.use_text_features:
+            self.vectorizer = vectorizer or CountVectorizer(
+                lowercase=False,
+                preprocessor=None,
+                tokenizer=None,
+                token_pattern=TOKEN_PATTERN,
+                ngram_range=(1, 2),
+                min_df=2,
+                max_df=0.95,
+                binary=True,
+            )
+        else:
+            self.vectorizer = None
+            
         self.scaler = scaler or StandardScaler()
         self.label_encoder = label_encoder or LabelEncoder()
-        self.text_extractor = TextStatsExtractor()
+        self.text_extractor = TextStatsExtractor(include_generic=include_generic_text_stats)
         self.code_extractor = RegexFeatureExtractor()
 
     def extract_handcrafted(self, df):
@@ -43,12 +49,15 @@ class FeaturePipeline:
         hc_features = self.extract_handcrafted(raw_train_df)
         X_hc_scaled = self.scaler.fit_transform(hc_features)
         
-        # Binary vectorization for text
-        print("Vectorizing text...")
-        X_vec = self.vectorizer.fit_transform(train_df["preprocessed_post"].fillna("").astype(str))
-        
-        # Combine text and scaled handcrafted features
-        X_combined = sp.hstack([X_vec, sp.csr_matrix(X_hc_scaled)]).tocsr()
+        if self.use_text_features:
+            # Binary vectorization for text
+            print("Vectorizing text...")
+            X_vec = self.vectorizer.fit_transform(train_df["preprocessed_post"].fillna("").astype(str))
+            
+            # Combine text and scaled handcrafted features
+            X_combined = sp.hstack([X_vec, sp.csr_matrix(X_hc_scaled)]).tocsr()
+        else:
+            X_combined = sp.csr_matrix(X_hc_scaled)
         
         # Encode targets
         y = self.label_encoder.fit_transform(train_df["tags"].astype(str))
@@ -61,28 +70,35 @@ class FeaturePipeline:
         hc_features = self.extract_handcrafted(raw_test_df)
         X_hc_scaled = self.scaler.transform(hc_features)
         
-        # Process text features
-        X_vec = self.vectorizer.transform(test_df["preprocessed_post"].fillna("").astype(str))
-        
-        # Combine
-        X_combined = sp.hstack([X_vec, sp.csr_matrix(X_hc_scaled)]).tocsr()
+        if self.use_text_features:
+            # Process text features
+            X_vec = self.vectorizer.transform(test_df["preprocessed_post"].fillna("").astype(str))
+            
+            # Combine
+            X_combined = sp.hstack([X_vec, sp.csr_matrix(X_hc_scaled)]).tocsr()
+        else:
+            X_combined = sp.csr_matrix(X_hc_scaled)
         
         # Encode labels
         y = self.label_encoder.transform(test_df["tags"].astype(str))
         
         return X_combined, y
 
-    def save(self):
+    def save(self, vectorizer_path=VECTORIZER_PATH, scaler_path=SCALER_PATH, label_encoder_path=LABEL_ENCODER_PATH):
         """Save the fitted components."""
-        joblib.dump(self.vectorizer, VECTORIZER_PATH)
-        joblib.dump(self.scaler, SCALER_PATH)
-        joblib.dump(self.label_encoder, LABEL_ENCODER_PATH)
-        print(f"Feature pipeline components saved to {VECTORIZER_PATH}, {SCALER_PATH}, {LABEL_ENCODER_PATH}")
+        if self.use_text_features:
+            joblib.dump(self.vectorizer, vectorizer_path)
+        joblib.dump(self.scaler, scaler_path)
+        joblib.dump(self.label_encoder, label_encoder_path)
+        print(f"Feature pipeline components saved to {scaler_path}, {label_encoder_path}" + (f", {vectorizer_path}" if self.use_text_features else ""))
 
     @classmethod
-    def load(cls):
+    def load(cls, use_text_features=True):
         """Load the fitted components."""
-        vectorizer = joblib.load(VECTORIZER_PATH)
+        if use_text_features:
+            vectorizer = joblib.load(VECTORIZER_PATH)
+        else:
+            vectorizer = None
         scaler = joblib.load(SCALER_PATH)
         label_encoder = joblib.load(LABEL_ENCODER_PATH)
-        return cls(vectorizer=vectorizer, scaler=scaler, label_encoder=label_encoder)
+        return cls(vectorizer=vectorizer, scaler=scaler, label_encoder=label_encoder, use_text_features=use_text_features)

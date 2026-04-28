@@ -7,8 +7,8 @@ BASE_DIR = MODEL3_DIR.parent
 
 # Input data paths (referencing existing data)
 RAW_DATA_PATH = BASE_DIR / "handcrafted_features" / "stack-overflow-data.csv"
-TRAIN_SPLIT_PATH = BASE_DIR / "model_benchmarking" / "outputs" / "pipeline" / "splits" / "train_data.csv"
-TEST_SPLIT_PATH = BASE_DIR / "model_benchmarking" / "outputs" / "pipeline" / "splits" / "test_data.csv"
+TRAIN_SPLIT_PATH = BASE_DIR / "scripts" / "outputs" / "pipeline" / "splits" / "train_data.csv"
+TEST_SPLIT_PATH = BASE_DIR / "scripts" / "outputs" / "pipeline" / "splits" / "test_data.csv"
 
 # Output paths for model3
 OUTPUT_DIR = MODEL3_DIR / "outputs"
